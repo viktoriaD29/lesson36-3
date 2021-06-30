@@ -21,7 +21,7 @@ const fetchUser = (userID) => {
     .then((res) => res.blog);
 };
 
-export const getUsersBlog = async (users) => {
+export const getUsersBlogs = async (users) => {
   try {
     const promises = users.map(async (userID) => {
       const res = await fetchUser(userID);
@@ -29,11 +29,10 @@ export const getUsersBlog = async (users) => {
     });
     return Promise.all(promises);
   } catch {
-    return Promise.reject()
+    return Promise.reject();
   }
-  
 };
-getUsersBlog(['google', 'facebook']).then((linksList) =>
+getUsersBlogs(['google', 'facebook']).then((linksList) =>
   console.log(linksList)
 );
 
